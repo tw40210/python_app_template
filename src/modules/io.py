@@ -1,5 +1,6 @@
 import numpy as np
 import json
+import logging
 
 
 class IOProcessor:
@@ -28,10 +29,6 @@ class IOProcessor:
                         if abs(data_np[i][k][j] - 1) > 1e-10:
                             raise ValueError(f"The diagonal of matrix should be 1 but not in {i + 1}th matrix."
                                              f"Please check the data validity.")
-                    # else:
-                    #                     #     if abs(data_np[i][k][j] - 1/data_np[i][j][k])> 1e-3:
-                    #                     #         raise ValueError(f"Corresponding elements in the matrix should be reciprocal but not in {i+1}th matrix."
-                    #                     #                          f"Please check the data validity.")
 
     def get_input_numpy(self):
         try:
@@ -40,7 +37,7 @@ class IOProcessor:
                 lines = json.loads(lines)
                 data_np = np.array(lines)
         except Exception as e:
-            print(e)
+            logging.error(e)
             raise ValueError(f"Input data is invalid."
                              f"Please check the file path is correct and the content is wrote in utf-8-sig and json format.")
 
@@ -51,7 +48,7 @@ class IOProcessor:
         self.matrix_len = data_np.shape[1]
 
         if len(self.currencies_name_tup) != self.matrix_len:
-            print(f"The length of input name list is not equal to the length of matrix_len:"
+            logging.warning(f"The length of input name list is not equal to the length of matrix_len:"
                   f"{len(self.currencies_name_tup)} {self.matrix_len},"
                   f"The name list was reset to default!")
             self.currencies_name_tup = tuple(range(self.matrix_len))

@@ -1,8 +1,12 @@
 import pytest
 import pickle
+import logging
+
 from src.api import max_profit
 from src.modules.kernel import ProfitCalculator
 
+logging.basicConfig(level=logging.DEBUG, filemode = 'a', format='%(levelname)s:%(asctime)s:  %(message)s'
+                    , datefmt='%Y-%d-%m %H:%M:%S')
 
 class TestMaxProfit:
     class FakeArgs:

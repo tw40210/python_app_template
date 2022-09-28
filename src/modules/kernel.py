@@ -20,7 +20,6 @@ class ProfitCalculator:
             cur_mat = np.tile(steps_max_np[i - 1], (m, 1)).T
             next_mat = cur_mat * next_mat
             steps_max_np[i] = np.max(next_mat, axis=0)
-            print(steps_max_np[i])
 
         tmp_end_idx = end_idx
         for i in range(n - 1, 0, -1):
@@ -29,7 +28,6 @@ class ProfitCalculator:
             next_mat = cur_mat * next_mat
             tmp_end_idx = np.argmax(next_mat[:, tmp_end_idx])
             steps.appendleft(tmp_end_idx)
-            print(tmp_end_idx)
 
         steps.appendleft(start_idx)
         steps.append(end_idx)
