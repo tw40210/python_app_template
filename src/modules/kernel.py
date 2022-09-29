@@ -32,4 +32,4 @@ class ProfitCalculator:
         steps.appendleft(start_idx)
         steps.append(end_idx)
 
-        return steps_max_np[-1][tmp_end_idx], list(steps)
+        return steps_max_np[-1][end_idx], list(steps)
