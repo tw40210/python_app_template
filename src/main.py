@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from src.api import max_profit
+from .api import max_profit
 
 logging.basicConfig(level=logging.DEBUG, filemode = 'a', format='%(levelname)s:%(asctime)s:  %(message)s'
                     , datefmt='%Y-%d-%m %H:%M:%S')
