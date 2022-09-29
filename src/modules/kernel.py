@@ -9,6 +9,10 @@ class ProfitCalculator:
     def get_max_profit_steps(self, data_np, start_idx, end_idx):
         n = data_np.shape[0]
         m = data_np.shape[1]
+
+        if not (0 <= end_idx < m) or not (0 <= start_idx < m):
+            raise ValueError(f"Start and end index should between 0~{m - 1} but get start: {start_idx}, end: {end_idx}")
+
         steps = deque([])
 
         steps_max_np = np.zeros([n, m])

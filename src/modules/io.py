@@ -49,8 +49,8 @@ class IOProcessor:
 
         if len(self.currencies_name_tup) != self.matrix_len:
             logging.warning(f"The length of input name list is not equal to the length of matrix_len:"
-                  f"{len(self.currencies_name_tup)} {self.matrix_len},"
-                  f"The name list was reset to default!")
+                            f"{len(self.currencies_name_tup)} {self.matrix_len},"
+                            f"The name list was reset to default!")
             self.currencies_name_tup = tuple(range(self.matrix_len))
 
     def gen_output_file(self, max_profit_val, steps):

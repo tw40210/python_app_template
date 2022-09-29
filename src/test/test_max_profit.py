@@ -1,10 +1,10 @@
-import pytest
 import pickle
 import logging
-import os, sys
+
 
 from ..api import max_profit
 from ..modules.kernel import ProfitCalculator
+
 
 
 logging.basicConfig(level=logging.DEBUG, filemode = 'a', format='%(levelname)s:%(asctime)s:  %(message)s'
@@ -34,8 +34,6 @@ class TestMaxProfit:
 
         assert val == golden_val
         assert len(steps) == len(golden_steps) and all([steps[i] == golden_steps[i] for i in range(len(golden_steps))])
-
-        print(val, steps)
 
     def test_end_to_end(self):
         max_profit(self.FakeArgs())
