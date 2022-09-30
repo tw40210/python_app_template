@@ -2,8 +2,6 @@ import logging
 
 from .modules.io import IOProcessor
 from .modules.kernel import ProfitCalculator
-
-
 def max_profit(args):
     io_processor = IOProcessor(args.input, args.output, args.name_list)
     profit_calculator = ProfitCalculator()
