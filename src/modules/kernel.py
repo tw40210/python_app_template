@@ -14,11 +14,10 @@ class ProfitCalculator:
             raise ValueError(f"Start and end index should between 0~{m - 1} but get start: {start_idx}, end: {end_idx}")
 
         steps = deque([])
-
         steps_max_np = np.zeros([n, m])
-
         steps_max_np[0] = data_np[0][start_idx]
 
+        #calculate the max_value of each currency in each month
         for i in range(1, n):
             next_mat = data_np[i]
             cur_mat = np.tile(steps_max_np[i - 1], (m, 1)).T
@@ -26,6 +25,7 @@ class ProfitCalculator:
             steps_max_np[i] = np.max(next_mat, axis=0)
 
         tmp_end_idx = end_idx
+        # trace back to see to can we get the max_value in the final statement
         for i in range(n - 1, 0, -1):
             next_mat = data_np[i]
             cur_mat = np.tile(steps_max_np[i - 1], (m, 1)).T
